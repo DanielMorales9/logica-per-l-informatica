@@ -1,0 +1,1 @@
+suffisso(S,L) :- append(H, S, L).
