@@ -1,3 +1,3 @@
-subst(_, _, [],[]).
-subst(X, Y, [X|Coda], N) :- subst(X, Y, Coda, R), !, append([Y], R, N).
-subst(X, Y, [H|Coda], N) :- subst(X, Y, Coda, R), append([H], R, N).
+subst(_, _, [],[]):-!.
+subst(X, Y, [X|Coda], [Y|R]) :- !,  subst(X, Y, Coda, R).
+subst(X, Y, [H|Coda], [H|R]) :- subst(X, Y, Coda, R).
