@@ -1,15 +1,16 @@
  max(X, Y, X):- X >= Y, !.
  max(_, Y, Y).
- bin_height(empty,0):- !.
- bin_height(empty,_) :- !, fail.
 
- bin_height(t(_,Left, Right),N):- bin_height(Left, S),bin_height(Right, R),  max(S, R, H), N is H+1.
+bin_height(t(_, empty, empty), 1) :- !.
+bin_height(t(_, empty, Right), N) :- !, bin_height(Right, H), N is H+1.
+bin_height(t(_, Left, empty), N) :- !, bin_height(Left, H), N is H+1.
+bin_height(t(_,Left, Right),N):- bin_height(Left, S),bin_height(Right, R),  max(S, R, H), N is H+1.
 
  reflect(t(X, empty, empty), t(X, empty, empty)).
  reflect(t(X, Left, Right), t(X, Right, Left)).
 
  bin_size(empty, 0).
- bin_size(t(_, L, R), N) :- bin_size(R, T), bin_size(L, H), N is T + H+1.
+ bin_size(t(_, L, R), N) :- bin_size(R, T), bin_size(L, H), N is T+H+1.
 
 /* bin_label(+T, +L) 
  bin_label(empty, _).
