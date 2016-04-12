@@ -1,5 +1,5 @@
 cartprod([], _, []).
-cartprod([A|C1],B,[S|R]) :- prod(A, B, S), cartprod(C1, B, R).
+cartprod([A|C],B,Cart) :- prod(A, B, S), cartprod(C, B, R), append(S, R, Cart).
 
-prod(_, [], []).
-prod(A, [X|Coda], Set):- prod(A, Coda, R),! , append([(A, X)], R, Set).
+prod(_, [], []):-!.
+prod(A, [X|Coda], [(A,X)|R]):- prod(A, Coda, R).
