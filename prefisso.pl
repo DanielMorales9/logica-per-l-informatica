@@ -1,2 +1,1 @@
-prefisso([],_).
-prefisso([X|Coda], [X|L]) :- prefisso(Coda, L).
+prefisso(S,L) :- append(S, _, L).
