@@ -32,10 +32,3 @@ balanced(t(_,L, R)) :- bin_height(L, S), bin_height(R, D), Z is abs(S-D), Z=<1, 
 branch(t(Leaf,empty, empty), Leaf, [Leaf]).
 branch(t(X,L, _), Leaf, [X|C]) :- branch(L, Leaf, C).
 branch(t(X,_, R), Leaf, [X|C]) :- branch(R, Leaf, C).
-
-
-
-
-
-
-
